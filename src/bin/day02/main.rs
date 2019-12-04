@@ -1,6 +1,6 @@
 use lazy_static::lazy_static;
 
-lazy_static!{
+lazy_static! {
     static ref PROGRAM: Vec<usize> = include_str!("input.txt")
         .trim()
         .split(',')
@@ -12,10 +12,10 @@ fn run(program: &mut [usize]) {
     let mut ip = 0;
     loop {
         match program[ip] {
-            1 => program[program[ip+3]] = program[program[ip+1]] + program[program[ip+2]],
-            2 => program[program[ip+3]] = program[program[ip+1]] * program[program[ip+2]],
+            1 => program[program[ip + 3]] = program[program[ip + 1]] + program[program[ip + 2]],
+            2 => program[program[ip + 3]] = program[program[ip + 1]] * program[program[ip + 2]],
             99 => return,
-            _ => panic!("unknown opcode")
+            _ => panic!("unknown opcode"),
         }
         ip += 4;
     }
