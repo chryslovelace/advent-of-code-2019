@@ -17,13 +17,13 @@ fn part1() {
         .permutations(5)
         .map(|settings| {
             settings.into_iter().fold(0, |input, setting| {
-                let mut output = Vec::new();
+                let mut output = intcode::LastOutput(0);
                 intcode::run(
                     &mut PROGRAM.clone(),
                     &mut vec![setting, input].into_iter(),
                     &mut output,
                 );
-                output[0]
+                output.0
             })
         })
         .max()
@@ -46,10 +46,11 @@ impl LoopInput {
 }
 
 impl intcode::Input for LoopInput {
-    fn get_input(&mut self) -> Option<isize> {
+    fn get_input(&mut self) -> isize {
         self.phase_setting
             .take()
             .or_else(|| self.channel.recv().ok())
+            .unwrap()
     }
 }
 

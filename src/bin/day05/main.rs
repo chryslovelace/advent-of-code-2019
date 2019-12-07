@@ -10,24 +10,16 @@ lazy_static! {
         .collect();
 }
 
-struct Output(isize);
-
-impl intcode::Output for Output {
-    fn send_output(&mut self, data: isize) {
-        self.0 = data;
-    }
-}
-
 fn part1() {
     let mut program = PROGRAM.clone();
-    let mut output = Output(0);
+    let mut output = intcode::LastOutput(0);
     intcode::run(&mut program, &mut iter::once(1), &mut output);
     println!("{}", output.0);
 }
 
 fn part2() {
     let mut program = PROGRAM.clone();
-    let mut output = Output(0);
+    let mut output = intcode::LastOutput(0);
     intcode::run(&mut program, &mut iter::once(5), &mut output);
     println!("{}", output.0);
 }

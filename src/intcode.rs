@@ -16,17 +16,25 @@ fn is_write_param(opcode: isize, param_idx: usize) -> bool {
 }
 
 pub trait Input {
-    fn get_input(&mut self) -> Option<isize>;
+    fn get_input(&mut self) -> isize;
 }
 
 impl<T: Iterator<Item = isize>> Input for T {
-    fn get_input(&mut self) -> Option<isize> {
-        self.next()
+    fn get_input(&mut self) -> isize {
+        self.next().unwrap()
     }
 }
 
 pub trait Output {
     fn send_output(&mut self, data: isize);
+}
+
+pub struct LastOutput(pub isize);
+
+impl Output for LastOutput {
+    fn send_output(&mut self, data: isize) {
+        self.0 = data;
+    }
 }
 
 impl Output for Vec<isize> {
@@ -57,7 +65,7 @@ pub fn run<I: Input, O: Output>(program: &mut [isize], input: &mut I, output: &m
         match opcode {
             1 => program[params[2] as usize] = params[0] + params[1],
             2 => program[params[2] as usize] = params[0] * params[1],
-            3 => program[params[0] as usize] = input.get_input().expect("missing input"),
+            3 => program[params[0] as usize] = input.get_input(),
             4 => output.send_output(params[0]),
             5 => {
                 if params[0] != 0 {
