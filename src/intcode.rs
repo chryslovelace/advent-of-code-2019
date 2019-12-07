@@ -53,7 +53,7 @@ pub fn run<I: Input, O: Output>(program: &mut [isize], input: &mut I, output: &m
         let mut modes = inst / 100;
         for i in 0..param_count(opcode) {
             params[i] = match modes % 10 {
-                _ if is_write_param(opcode, i) => program[ip],
+                0 if is_write_param(opcode, i) => program[ip],
                 0 => program[program[ip] as usize],
                 1 => program[ip],
                 _ => panic!("unknown parameter mode"),
