@@ -20,7 +20,7 @@ fn part1() {
 fn part2() {
     let mut program = PROGRAM.clone();
     let mut output = Vec::new();
-    intcode::run(&mut program, &mut iter::once(1), &mut output);
+    intcode::run(&mut program, &mut iter::once(5), &mut output);
     println!("{:?}", output);
 }
 
