@@ -1,4 +1,4 @@
-use aoc2019::intcode;
+use aoc2019::intcode::day7 as intcode;
 use lazy_static::lazy_static;
 use std::iter;
 
