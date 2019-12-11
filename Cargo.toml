@@ -10,8 +10,7 @@ edition = "2018"
 lazy_static = "*"
 itertools = "*"
 crossbeam = "*"
-num-traits = "*"
-num-bigint = "*"
+num = "*"
 
 [lib]
 name = "aoc2019"

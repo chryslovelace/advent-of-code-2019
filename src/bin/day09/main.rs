@@ -1,6 +1,6 @@
 use aoc2019::intcode::*;
-use num_bigint::BigInt;
-use num_traits::One;
+use num::bigint::BigInt;
+use num::traits::One;
 use std::iter;
 
 const INPUT: &'static str = include_str!("input.txt");

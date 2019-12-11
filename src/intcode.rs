@@ -1,6 +1,6 @@
 use lazy_static::lazy_static;
-use num_bigint::BigInt;
-use num_traits::{One, Signed, ToPrimitive, Zero};
+use num::bigint::BigInt;
+use num::traits::{One, Signed, ToPrimitive, Zero};
 use std::collections::BTreeMap;
 use std::fmt;
 
