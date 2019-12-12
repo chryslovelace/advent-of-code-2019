@@ -12,6 +12,7 @@ itertools = "*"
 crossbeam = "*"
 num = "*"
 regex = "*"
+packed_simd = "*"
 
 [lib]
 name = "aoc2019"
