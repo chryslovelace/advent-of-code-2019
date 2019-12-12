@@ -11,6 +11,7 @@ lazy_static = "*"
 itertools = "*"
 crossbeam = "*"
 num = "*"
+regex = "*"
 
 [lib]
 name = "aoc2019"
