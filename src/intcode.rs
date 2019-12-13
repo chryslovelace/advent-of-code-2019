@@ -79,7 +79,7 @@ impl Program {
         }
     }
 
-    fn get(&self, idx: &BigInt) -> &BigInt {
+    pub fn get(&self, idx: &BigInt) -> &BigInt {
         lazy_static! {
             static ref ZERO: BigInt = BigInt::zero();
         }
@@ -89,7 +89,7 @@ impl Program {
         self.memory.get(idx).unwrap_or(&*ZERO)
     }
 
-    fn set(&mut self, idx: BigInt, data: BigInt) {
+    pub fn set(&mut self, idx: BigInt, data: BigInt) {
         if idx.is_negative() {
             panic!("attempted to write negative address");
         }
